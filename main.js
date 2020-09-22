@@ -27,7 +27,7 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 function validateCred(cardNumber) {
     let validate = cardNumber.reverse().reduce(function(acc, cur, index) {
-        if(!(index % 2 == 0)) {
+        if(index % 2 != 0) {
             let val = cur * 2;
             if(val > 9) {
                 acc += val - 9;
@@ -40,8 +40,6 @@ function validateCred(cardNumber) {
         return acc;
     });
     return (validate % 10 == 0);
-
 }
 
 batch.forEach(element => console.log(validateCred(element)));
-// console.log(validateCred(valid1));
